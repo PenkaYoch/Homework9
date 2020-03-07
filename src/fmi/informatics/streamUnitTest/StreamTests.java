@@ -1,11 +1,14 @@
 package fmi.informatics.streamUnitTest;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import fmi.informatics.functional.Rock;
 import fmi.informatics.functional.StudentStreamUtils;
 
 public class StreamTests {
@@ -40,5 +43,13 @@ public class StreamTests {
 	@Test
 	public void testTask3() {
 		assertNotNull(StudentStreamUtils.task3ForTest());
+	}
+	
+	@Test
+	public void testRock() {
+		Rock onEarth = new Rock();
+		double timeToHitGroundExpected = onEarth.drop(1000);
+		double timeToHitGround = onEarth.drop();
+		assertEquals(timeToHitGroundExpected, timeToHitGround);
 	}
 }
